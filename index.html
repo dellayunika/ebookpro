@@ -10,13 +10,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <style>
-        /* Menggunakan font-family yang lebih universal atau diimpor (opsional: tambahkan import font Inter di sini) */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8f9fa; 
         }
         .hero-section {
-            background-color: #0d6efd; /* Primary color */
+            background-color: #0d6efd; 
             color: white;
             padding: 80px 0;
             min-height: 80vh;
@@ -266,16 +265,13 @@
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Skrip untuk mengaktifkan validasi formulir Bootstrap dan menampilkan Toast.
         (function () {
             'use strict';
             
             var form = document.querySelector('.needs-validation');
             var preOrderModalEl = document.getElementById('preOrderModal');
             
-            // Inisialisasi Toast
             var successToastEl = document.getElementById('successToast');
-            // Membuat instance Toast Bootstrap (Sekarang objek 'bootstrap' sudah ada)
             var successToast = new bootstrap.Toast(successToastEl, {
                 autohide: true,
                 delay: 5000 
@@ -283,32 +279,23 @@
 
 
             form.addEventListener('submit', function (event) {
-                // Mencegah pengiriman formulir secara default (agar tidak me-refresh halaman)
                 event.preventDefault(); 
                 
-                // Cek Validasi Form
                 if (!form.checkValidity()) {
-                    // Jika formulir TIDAK valid, hentikan aksi, dan biarkan Bootstrap menampilkan pesan error
                     event.stopPropagation();
                 } else {
-                    // Jika formulir VALID:
                     
-                    // 1. Dapatkan instance Modal dan tutup modal tersebut
-                    // Menggunakan getInstance untuk mendapatkan objek modal yang sudah diinisialisasi oleh Bootstrap
                     var modal = bootstrap.Modal.getInstance(preOrderModalEl);
                     if (modal) {
                         modal.hide();
                     }
                     
-                    // 2. Tampilkan Toast sukses (notifikasi di sudut layar)
                     successToast.show();
 
-                    // 3. Reset tampilan form untuk penggunaan berikutnya
                     form.reset();
                     form.classList.remove('was-validated'); 
                 }
                 
-                // Selalu tambahkan kelas 'was-validated' agar pesan error Bootstrap muncul
                 form.classList.add('was-validated');
             }, false);
         })();
